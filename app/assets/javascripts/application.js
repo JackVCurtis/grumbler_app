@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+App = {
+  Routers: {},
+  Collections: {},
+  Models: {},
+  Views: {}
+}
+
+$('document').ready(function(){
+  App.Routers.main = new App.Routers.Main();
+  Backbone.history.start();
+});

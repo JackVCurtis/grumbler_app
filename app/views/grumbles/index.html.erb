@@ -1,0 +1,21 @@
+
+
+<script id='edit-grumble-template' type="text/x-handlebars-template">
+  <div class="grumble-form-div">
+    <input type="text" name="title" value="{{title}}">
+    <input type="text" name="content" value="{{content}}">
+    <input type="text" name="author" value="{{author}}">
+    <input type="text" name="avatar" value="{{avatar}}">
+    <span class="submit">Submit</span>
+  </div>
+</script>
+<script type="text/x-handlebars-template" id="grumble-template">
+  <div id={{id}}>
+    <img src="{{avatar}}" alt="">
+    <h5>{{title}} | <span class='author'>{{author}}</span></h5>
+    <p>{{content}}</p>
+    <span class='show'>Show</span>
+    <span class='destroy'>Delete</span>
+    <span class='edit'>Edit</span>
+  </div>
+</script>
