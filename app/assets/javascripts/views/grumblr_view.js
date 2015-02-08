@@ -25,8 +25,15 @@ App.Views.GrumblrView = Backbone.View.extend({
   },
 
   onDestroy: function() {
-    this.model.destroy();
-    this.remove();
+    var self = this;
+    this.model.destroy({
+      success: function(){
+        self.remove();
+      },
+      error: function(){
+        alert("Could not delete grumble.");
+      }
+    });
   },
 
   show: function() {
@@ -54,7 +61,14 @@ App.Views.GrumblrView = Backbone.View.extend({
       content: this.$("[name='content']").val()
     };
     this.model.set( data );
-    this.model.save();
+    this.model.save({
+      success: function(model, response, options){
+        console.log(response);
+      },
+      error: function(){
+        alert("Could not edit grumble.");
+      }
+    });
     if ( !this.model.hasChanged() ) { 
       this.render(); 
     }
