@@ -25,13 +25,13 @@ App.Views.GrumblrView = Backbone.View.extend({
   },
 
   onDestroy: function() {
-    this.model.collection.remove(this.model);
+    this.model.destroy();
     this.remove();
   },
 
   show: function() {
-    App.Routers.main.navigate("grumbles/" + this.model.cid);
-    App.Views.grumbleListView.filterByCID(this.model.cid);
+    App.Routers.main.navigate("grumbles/" + this.model.id);
+    App.Views.grumbleListView.filterByID(this.model.id);
   },
 
   showAuthor: function() {
@@ -40,7 +40,7 @@ App.Views.GrumblrView = Backbone.View.extend({
   },
 
   edit: function(){
-    App.Routers.main.navigate("grumbles/" + this.model.cid + "/edit")
+    App.Routers.main.navigate("grumbles/" + this.model.id + "/edit")
     this.render();
     var html = this.editTemplate(this.model.attributes);
     this.$el.append(html);
@@ -54,6 +54,7 @@ App.Views.GrumblrView = Backbone.View.extend({
       content: this.$("[name='content']").val()
     };
     this.model.set( data );
+    this.model.save();
     if ( !this.model.hasChanged() ) { 
       this.render(); 
     }

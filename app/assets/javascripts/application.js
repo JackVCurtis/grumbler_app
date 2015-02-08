@@ -12,17 +12,24 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require underscore
+//= require backbone
+//= require handlebars
+//= require_self
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
+
 
 App = {
   Routers: {},
   Collections: {},
   Models: {},
   Views: {}
-}
+};
 
 $('document').ready(function(){
   App.Routers.main = new App.Routers.Main();
-  Backbone.history.start();
+  Backbone.history.start({pushState: true});
 });

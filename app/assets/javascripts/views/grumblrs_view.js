@@ -31,9 +31,9 @@ App.Views.GrumblrsView = Backbone.View.extend({
     this.form.show();
   },
 
-  filterByCID: function(cid) {
+  filterByID: function(id) {
     _.each(this.views, function(view){
-      if (view.model.cid != cid) {
+      if (view.model.id != id) {
         view.$el.hide();
       }
     });
@@ -47,9 +47,9 @@ App.Views.GrumblrsView = Backbone.View.extend({
     })
   },
 
-  editByCID: function(cid) {
+  editByCID: function(id) {
     _.each(this.views, function(view){
-      if (view.model.cid != cid){
+      if (view.model.id != id){
         view.edit();
       }
     })

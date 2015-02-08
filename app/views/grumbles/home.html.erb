@@ -1,0 +1,40 @@
+    <header>
+      <img src="https://camo.githubusercontent.com/613bc7eb2a28483a252a45946af877f7034a919d/687474703a2f2f692e696d6775722e636f6d2f554a38747232412e6a7067">
+    </header>
+
+   <div id='grumble-form-modal' class="modal">
+      <span class="cancel">[x]</span>
+      <div class="grumble-form">
+        <form>
+          <input type="text" name="title" placeholder="title" value="">
+          <input type="text" name="content" placeholder="content" value="">
+          <input type="text" name="author" placeholder="author" value="">
+          <input type="text" name="avatar" placeholder="avatar" value="">
+          <span class="new-grumble">GRUMBLE</span>
+        </form>
+      </div>
+    </div>
+
+    <div id='grumble-list'>
+      <div class='add-grumble'>Add Grumble</div>
+    </div>
+
+<script id='edit-grumble-template' type="text/x-handlebars-template">
+  <div class="grumble-form-div">
+    <input type="text" name="title" value="{{title}}">
+    <input type="text" name="content" value="{{content}}">
+    <input type="text" name="author" value="{{author}}">
+    <input type="text" name="avatar" value="{{avatar}}">
+    <span class="submit">Submit</span>
+  </div>
+</script>
+<script type="text/x-handlebars-template" id="grumble-template">
+  <div id={{id}}>
+    <img src="{{avatar}}" alt="">
+    <h5>{{title}} | <span class='author'>{{author}}</span></h5>
+    <p>{{content}}</p>
+    <span class='show'>Show</span>
+    <span class='destroy'>Delete</span>
+    <span class='edit'>Edit</span>
+  </div>
+</script>
