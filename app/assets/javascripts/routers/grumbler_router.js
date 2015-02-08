@@ -31,14 +31,12 @@ App.Routers.Main = Backbone.Router.extend({
   initialize: function() {
     // Instantiate grumbles collection.
     App.Collections.grumbles = new App.Collections.Grumblrs();
-
+    bootstrapGrumbles();
     // Instantiate grumble form view, pass collection to it
     App.Views.grumbleFormView = new App.Views.GrumblrFormView({collection: App.Collections.grumbles});
 
     // Instantiate grumble collection view, pass collection to it
     App.Views.grumbleListView = new App.Views.GrumblrsView({collection: App.Collections.grumbles, form: App.Views.grumbleFormView});
-
-    App.Collections.grumbles.fetch();
   }
 
 });
