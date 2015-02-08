@@ -2,7 +2,8 @@ App.Views.GrumblrsView = Backbone.View.extend({
   el: '#grumble-list',
 
   events: {
-    'click .add-grumble' : 'showForm'
+    'click .add-grumble' : 'showForm',
+    'click .next-page' : 'showNextPage'
   },
 
   initialize: function(options) {
@@ -11,7 +12,7 @@ App.Views.GrumblrsView = Backbone.View.extend({
     this.listenTo(this.collection, 'reset', this.addAll)
 
     this.views = [];
-
+    this.page = 0;
     this.addAll();
   },
 
@@ -25,6 +26,24 @@ App.Views.GrumblrsView = Backbone.View.extend({
     this.collection.each(function(grumble){
       this.addOne(grumble);
     },this)
+  },
+
+  showNextPage: function(){
+    var self = this;
+    self.page += 1
+    self.collection.fetch({
+      data: {page: self.page},
+      success: function(model, response, options){
+        console.log(self);
+        console.log(response);
+        if (response.length > 0){
+          console.log('inside if statement');
+          for(var i = 0; i < response.length; i++){
+            self.addOne(response[i]);
+          }
+        }
+      }
+    })
   },
 
   showForm: function(){

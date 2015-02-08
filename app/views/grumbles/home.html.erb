@@ -17,6 +17,7 @@
 
     <div id='grumble-list'>
       <div class='add-grumble'>Add Grumble</div>
+      <div class='next-page'>More Grumbles</div>
     </div>
 <script id='edit-grumble-template' type="text/x-handlebars-template">
   <div class="grumble-form-div">
@@ -39,6 +40,6 @@
 </script>
 <script type="text/javascript" charset="utf-8">
   function bootstrapGrumbles(){
-    App.Collections.grumbles.add(<%= json_escape @grumbles.to_json.html_safe %>);
+    App.Collections.grumbles.reset(<%= json_escape @grumbles.to_json.html_safe %>);
   }
 </script>
